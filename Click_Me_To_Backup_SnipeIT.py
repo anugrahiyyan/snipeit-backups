@@ -58,14 +58,14 @@ def download_file():
 
             while True:
                 # Prompt user to select a file
-                file_choice = input(Fore.YELLOW + "Enter the number of the file you want to download: ").strip()
+                file_choice = input(Fore.YELLOW + "Enter the number of the file you want to download (or type 'exit' to quit): ").strip()
 
                 if file_choice.lower() == "exit":
                     display_exit_animation()
                     return False  # Stop the loop and exit the program
 
                 if not file_choice.isdigit() or not (1 <= int(file_choice) <= len(zip_files)):
-                    print(Fore.RED + "The number you chose is wrong. Please enter a valid backup file.")
+                    print(Fore.RED + "Are you blind or what?. Please enter a valid backups file number!!.")
                 else:
                     selected_file = zip_files[int(file_choice) - 1]
 
@@ -78,7 +78,8 @@ def download_file():
                     file_size = sftp.stat(remote_file_path).st_size
 
                     # Use tqdm to display progress manually
-                    print(Fore.CYAN + f"\nDownloading {selected_file} to this secure instance ...")
+                    print(Fore.CYAN + f"\nDownloading {selected_file} to this secure machine ...")
+                    print(Fore.CYAN + f"Ngopi Dulu Ga Sih ...\n")
 
                     with tqdm(total=file_size, unit='B', unit_scale=True, desc=f"Downloading {selected_file}") as progress_bar:
                         with open(local_file_path, 'wb') as local_file:
