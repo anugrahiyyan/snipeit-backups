@@ -58,7 +58,7 @@ def download_file():
 
             while True:
                 # Prompt user to select a file
-                file_choice = input(Fore.YELLOW + "Enter the number of the file you want to download (or type 'exit' to quit): ").strip()
+                file_choice = input(Fore.YELLOW + "Enter the number of the file you want to download: ").strip()
 
                 if file_choice.lower() == "exit":
                     display_exit_animation()
