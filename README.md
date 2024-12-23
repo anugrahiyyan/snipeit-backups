@@ -77,6 +77,3 @@ This project is licensed under the MIT License. Feel free to modify and share!
 ## Author
 Created by **Galbatorix**.
 
-## Contributions
-Contributions are welcome! Feel free to fork this repository and submit a pull request with your improvements.
-
