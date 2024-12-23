@@ -56,39 +56,43 @@ def download_file():
             for idx, filename in enumerate(zip_files, start=1):
                 print(Fore.WHITE + f"{idx}. {filename}")
 
-            # Prompt user to select a file
-            file_choice = input(Fore.YELLOW + "Enter the number of the file you want to download: ")
+            while True:
+                # Prompt user to select a file
+                file_choice = input(Fore.YELLOW + "Enter the number of the file you want to download (or type 'exit' to quit): ").strip()
 
-            if not file_choice.isdigit() or not (1 <= int(file_choice) <= len(zip_files)):
-                print(Fore.RED + "Invalid choice. Exiting.")
-                return False
-            else:
-                selected_file = zip_files[int(file_choice) - 1]
+                if file_choice.lower() == "exit":
+                    display_exit_animation()
+                    return False  # Stop the loop and exit the program
 
-                # Ensure the local directory exists
-                os.makedirs(local_path, exist_ok=True)
-                local_file_path = os.path.join(local_path, selected_file)
+                if not file_choice.isdigit() or not (1 <= int(file_choice) <= len(zip_files)):
+                    print(Fore.RED + "The number you chose is wrong. Please enter a valid backup file.")
+                else:
+                    selected_file = zip_files[int(file_choice) - 1]
 
-                # Open the file and get its size
-                remote_file_path = remote_path + selected_file
-                file_size = sftp.stat(remote_file_path).st_size
+                    # Ensure the local directory exists
+                    os.makedirs(local_path, exist_ok=True)
+                    local_file_path = os.path.join(local_path, selected_file)
 
-                # Use tqdm to display progress manually
-                print(Fore.CYAN + f"\nDownloading {selected_file} to this secure instance ...")
+                    # Open the file and get its size
+                    remote_file_path = remote_path + selected_file
+                    file_size = sftp.stat(remote_file_path).st_size
 
-                with tqdm(total=file_size, unit='B', unit_scale=True, desc=f"Downloading {selected_file}") as progress_bar:
-                    with open(local_file_path, 'wb') as local_file:
-                        # Read the file in chunks and update progress
-                        with sftp.open(remote_file_path, 'rb') as remote_file:
-                            while True:
-                                data = remote_file.read(1024 * 1024)  # Read in 1MB chunks
-                                if not data:
-                                    break
-                                local_file.write(data)
-                                progress_bar.update(len(data))
+                    # Use tqdm to display progress manually
+                    print(Fore.CYAN + f"\nDownloading {selected_file} to this secure instance ...")
 
-                print(Fore.GREEN + f"\nFile downloaded successfully to {local_file_path}!")
-                return True
+                    with tqdm(total=file_size, unit='B', unit_scale=True, desc=f"Downloading {selected_file}") as progress_bar:
+                        with open(local_file_path, 'wb') as local_file:
+                            # Read the file in chunks and update progress
+                            with sftp.open(remote_file_path, 'rb') as remote_file:
+                                while True:
+                                    data = remote_file.read(1024 * 1024)  # Read in 1MB chunks
+                                    if not data:
+                                        break
+                                    local_file.write(data)
+                                    progress_bar.update(len(data))
+
+                    print(Fore.GREEN + f"\nFile downloaded successfully to {local_file_path}!")
+                    return True
 
     except Exception as e:
         print(Fore.RED + f"An error occurred: {e}")
@@ -106,7 +110,7 @@ print(Fore.CYAN + "Welcome to SnipeIT-Backup Console, created by Galbatorix\n")
 print(Fore.YELLOW + "Please enter your credentials to continue...\n")
 
 # Prompt for SSH password
-password = getpass.getpass(Fore.YELLOW + "SSH Credentials: ")
+password = getpass.getpass(Fore.YELLOW + "Credentials: ")
 
 # Interactive loop
 while True:
