@@ -42,11 +42,6 @@ Welcome to the **SnipeIT-Backup Console**, a Python-based interactive script for
 5. After the download completes, choose whether to download another file or exit.
 6. If you exit, watch the animated farewell message!
 
-To install these dependencies, run:
-```bash
-pip install -r requirements.txt
-```
-
 ## Example Output
 Upon running the program, you will see:
 ```plaintext
