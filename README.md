@@ -20,8 +20,8 @@ Welcome to the **SnipeIT-Backup Console**, a Python-based interactive script for
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repository-name.git
-   cd your-repository-name
+   git clone https://github.com/anugrahiyyan/snipeit-backups.git
+   cd snipeit-backups
    ```
 
 2. Install the required Python libraries:
@@ -31,7 +31,7 @@ Welcome to the **SnipeIT-Backup Console**, a Python-based interactive script for
 
 3. Run the program:
    ```bash
-   python your_script_name.py
+   python Click_Me_To_Backup_SnipeIT.py
    ```
 
 ## Usage
@@ -41,13 +41,6 @@ Welcome to the **SnipeIT-Backup Console**, a Python-based interactive script for
 4. Enjoy the progress bar as the file downloads.
 5. After the download completes, choose whether to download another file or exit.
 6. If you exit, watch the animated farewell message!
-
-## Dependencies
-The following Python libraries are required to run the program:
-- `paramiko`: For SSH and SFTP communication.
-- `tqdm`: For displaying progress bars.
-- `pyfiglet`: For generating ASCII art.
-- `colorama`: For colored terminal output.
 
 To install these dependencies, run:
 ```bash
@@ -76,4 +69,3 @@ This project is licensed under the MIT License. Feel free to modify and share!
 
 ## Author
 Created by **Galbatorix**.
-
