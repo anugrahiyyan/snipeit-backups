@@ -11,11 +11,11 @@ import itertools
 init(autoreset=True)
 
 # SSH connection details
-host = "192.168.0.124"
+host = "192.168.xx.xxx"
 port = 22
-username = "gbtrx"
-remote_path = "/var/www/html/snipeit/storage/app/backups/"
-local_path = r"C:\Users\Galbatorix\Documents\GBtrX\Bourvadia-Sandbox\SnipeIT-Backup"
+username = "your_username"
+remote_path = "/var/www/html/snipeit/storage/app/backups/" # Change if the locations different.
+local_path = r"C:\Users\your_path" # Use Your Local Folder or whatever.
 
 def display_exit_animation():
     """Displays a farewell message and a train animation."""
@@ -106,7 +106,7 @@ print(Fore.CYAN + "Welcome to SnipeIT-Backup Console, created by Galbatorix\n")
 print(Fore.YELLOW + "Please enter your credentials to continue...\n")
 
 # Prompt for SSH password
-password = getpass.getpass(Fore.YELLOW + "Credentials: ")
+password = getpass.getpass(Fore.YELLOW + "SSH Credentials: ")
 
 # Interactive loop
 while True:
